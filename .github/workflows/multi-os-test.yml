@@ -1,0 +1,42 @@
+name: Multi-OS Testing - Bassam Husam
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print start message
+        run: echo "Testing on Ubuntu..."
+
+      - name: Display OS info
+        run: uname -a
+
+      - name: Create Ubuntu test file
+        run: echo "Ubuntu test by Bassam Husam" > test-ubuntu.txt
+
+      - name: Display file contents
+        run: cat test-ubuntu.txt
+
+      - name: Print completion message
+        run: echo "Ubuntu tests completed"
+
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Print start message
+        run: echo "Testing on Windows..."
+
+      - name: Display OS info
+        run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+
+      - name: Create Windows test file
+        run: echo "Windows test by Bassam Husam" > test-windows.txt
+
+      - name: Display file contents
+        run: type test-windows.txt
+
+      - name: Print completion message
+        run: echo "Windows tests completed"
